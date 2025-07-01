@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon expressproyecto_acme_school --quiet"
+    "dev": "nodemon expressreview_acme_store --quiet"
   },
   "type": "module",
   "author": "Esteban Briceño",
