@@ -1,12 +1,12 @@
-import Student from "../models/Student_models.js";
+import Products from "../models/Products_models.js";
 import { ObjectId } from "mongodb";
 
-export default class StudentController{
+export default class ProductController{
 
-    #studentModel;
+    #productModel;
 
     constructor(){
-        this.#studentModel = new Student();
+        this.#productModel = new Products();
         this.getAll = this.getAll.bind(this);
         this.getById = this.getById.bind(this);
         this.create = this.create.bind(this);
@@ -15,24 +15,24 @@ export default class StudentController{
     }
 
     async getAll(req,res){
-        const student = await this.#studentModel.getAll()
-        res.json(student);
+        const course = await this.#productModel.getAll()
+        res.json(course);
     };
     async getById(req,res){
-        const student = await this.#studentModel.getById(ObjectId.createFromHexString(req.params.id))
-        res.json(student);
+        const course = await this.#productModel.getById(ObjectId.createFromHexString(req.params.id))
+        res.json(course);
     };
     async create(req,res){
-        const result = await this.#studentModel.create(req.body)
+        const result = await this.#productModel.create(req.body)
         res.json(result)
     };
     async update(req,res){
         const _id =ObjectId.createFromHexString(req.params.id);
-        const result = await this.#studentModel.update(_id, req.body)
+        const result = await this.#productModel.update(_id, req.body)
         res.json(result)
     };
     async delete(req,res){
-        const result = await this.#studentModel.delete(ObjectId.createFromHexString(req.params.id))
+        const result = await this.#productModel.delete(ObjectId.createFromHexString(req.params.id))
         res.json(result)
     };
 }

@@ -1,12 +1,12 @@
-import City from "../models/City_models.js";
+import Category from "../models/Categories_models.js";
 import { ObjectId } from "mongodb";
 
-export default class CityController{
+export default class CategoryController{
 
-    #cityModel;
+    #categoryModel;
 
     constructor(){
-        this.#cityModel = new City();
+        this.#categoryModel = new Category();
         this.getAll = this.getAll.bind(this);
         this.getById = this.getById.bind(this);
         this.create = this.create.bind(this);
@@ -15,24 +15,24 @@ export default class CityController{
     }
 
     async getAll(req,res){
-        const city = await this.#cityModel.getAll()
+        const city = await this.#categoryModel.getAll()
         res.json(city);
     };
     async getById(req,res){
-        const city = await this.#cityModel.getById(ObjectId.createFromHexString(req.params.id))
+        const city = await this.#categoryModel.getById(ObjectId.createFromHexString(req.params.id))
         res.json(city);
     };
     async create(req,res){
-        const result = await this.#cityModel.create(req.body)
+        const result = await this.#categoryModel.create(req.body)
         res.json(result)
     };
     async update(req,res){
         const _id =ObjectId.createFromHexString(req.params.id);
-        const result = await this.#cityModel.update(_id, req.body)
+        const result = await this.#categoryModel.update(_id, req.body)
         res.json(result)
     };
     async delete(req,res){
-        const result = await this.#cityModel.delete(ObjectId.createFromHexString(req.params.id))
+        const result = await this.#categoryModel.delete(ObjectId.createFromHexString(req.params.id))
         res.json(result)
     };
 }

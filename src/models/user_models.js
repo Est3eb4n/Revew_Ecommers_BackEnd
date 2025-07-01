@@ -7,15 +7,15 @@ const userSchema = new mongoose.Schema({
     googleId: String,
     role:{
         type: String,
-        enum:['admin','teacher', 'student'],
+        enum:['admin','client', 'seler'],
     },
     studentDetails: {
         grade: String,
-        courses:[{ type: mongoose.Schema.Types.ObjectId, ref:'Course'}]
+        sales:[{ type: mongoose.Schema.Types.ObjectId, ref:'Sales'}]
     },
     teacherDetails:{
         department: String,
-        assignedCourses: [{type: mongoose.Schema.Types.ObjectId, ref:'Course'}]
+        assignedSales: [{type: mongoose.Schema.Types.ObjectId, ref:'Sales'}]
     }
 });
 
